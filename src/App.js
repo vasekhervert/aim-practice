@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./app.scss";
+import Content from "./components/Content";
+
+import {
+  SettingsProvider,
+  StatsProvider,
+  ScoreProvider,
+  RewardsProvider,
+} from "./contexts";
 
 function App() {
+  useEffect(() => {
+    document.addEventListener("contextmenu", (event) => event.preventDefault());
+    return () => {
+      document.removeEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StatsProvider>
+      <SettingsProvider>
+        <RewardsProvider>
+          <ScoreProvider>
+            <div className="App">
+              <Content />
+            </div>
+          </ScoreProvider>
+        </RewardsProvider>
+      </SettingsProvider>
+    </StatsProvider>
   );
 }
 
