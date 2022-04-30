@@ -79,7 +79,7 @@ export default function Grid({
     } else {
       setGame(false);
       setCounter(0);
-      if (counter === 50) {
+      if (counter === 25) {
         setGameOver(true);
       }
     }

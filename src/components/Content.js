@@ -23,7 +23,7 @@ export default function Content() {
     }, 7000);
     setTimeout(() => {
       setGame(!game);
-    }, 8000);
+    }, 7500);
   }
 
   return (
