@@ -6,7 +6,25 @@ import Settings from "./Settings";
 export default function Content() {
   const [view, setView] = useState("pregame");
   const [game, setGame] = useState(false);
+  const [shouldShowGrid, setShouldShowGrid] = useState(false);
+  const [shouldShowCountdown, setShouldShowCountdown] = useState(false);
+  const [counter, setCounter] = useState(0);
   const { score, setScore } = useScoreValue();
+
+  function startGameSequence() {
+    setTimeout(() => {
+      setShouldShowGrid(true);
+    }, 1000);
+    setTimeout(() => {
+      setShouldShowCountdown(true);
+    }, 2000);
+    setTimeout(() => {
+      setShouldShowCountdown(false);
+    }, 7000);
+    setTimeout(() => {
+      setGame(!game);
+    }, 8000);
+  }
 
   return (
     <div>
@@ -20,9 +38,7 @@ export default function Content() {
               setScore((prevState) => ({
                 score: 0,
               }));
-              setTimeout(() => {
-                setGame(!game);
-              }, 5000);
+              startGameSequence();
             }}
           >
             Start game
@@ -31,8 +47,20 @@ export default function Content() {
       )}
       {view === "game" && (
         <>
-          <span>Score: {score.score}</span>
-          <Grid game={game} setGame={setGame} setView={setView} />
+          <div className="game-head">
+            <div>Score: {score.score}</div>
+            <div className="counter">{counter} / 25</div>
+          </div>
+
+          <Grid
+            game={game}
+            setGame={setGame}
+            shouldShowGrid={shouldShowGrid}
+            shouldShowCountdown={shouldShowCountdown}
+            setView={setView}
+            counter={counter}
+            setCounter={setCounter}
+          />
         </>
       )}
       {view === "postgame" && (

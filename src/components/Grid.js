@@ -3,15 +3,23 @@ import Target from "./Target";
 import { useScoreValue, useSettingsValue, useRewardsValue } from "../contexts";
 import { minMax } from "../constants";
 import ShotPoints from "./ShotPoints";
+import Countdown from "./Countdown";
 
-export default function Grid({ game, setGame, setView }) {
+export default function Grid({
+  game,
+  setGame,
+  setView,
+  shouldShowGrid,
+  counter,
+  setCounter,
+  shouldShowCountdown,
+}) {
   const [shouldShowTarget, setShouldShowTarget] = useState(false);
   const [shouldShowPoints, setShouldShowPoints] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [top, setTop] = useState(300);
   const [left, setLeft] = useState(400);
   const [points, setPoints] = useState(null);
-  const [counter, setCounter] = useState(0);
   const { settings } = useSettingsValue();
   const { rewards } = useRewardsValue();
   const { setScore } = useScoreValue();
@@ -63,8 +71,10 @@ export default function Grid({ game, setGame, setView }) {
     });
   }
 
+  function startCoundDown() {}
+
   useEffect(() => {
-    if (game && counter < 50) {
+    if (game && counter < 25) {
       startRound();
     } else {
       setGame(false);
@@ -74,7 +84,9 @@ export default function Grid({ game, setGame, setView }) {
       }
     }
     if (gameOver) {
-      setView("postgame");
+      setTimeout(() => {
+        setView("postgame");
+      }, 1500);
     }
     return () => {
       clearTimeout(show);
@@ -82,18 +94,27 @@ export default function Grid({ game, setGame, setView }) {
     };
   }, [counter, game]);
 
+  useEffect(() => {
+    if (shouldShowGrid) {
+      startCoundDown();
+    }
+  });
+
   return (
     <div
-      className={`grid-wrapper ${game && "game"}`}
+      className={`grid-wrapper ${shouldShowGrid && "game"}`}
       onClick={(e) => {
-        let rect = document
-          .querySelector("div.grid-wrapper")
-          .getBoundingClientRect();
-        let cordX = e.clientX - rect.left;
-        let cordY = e.clientY - rect.top;
-        missTarget(cordX, cordY);
+        if (game) {
+          let rect = document
+            .querySelector("div.grid-wrapper")
+            .getBoundingClientRect();
+          let cordX = e.clientX - rect.left;
+          let cordY = e.clientY - rect.top;
+          missTarget(cordX, cordY);
+        }
       }}
     >
+      {shouldShowCountdown && <Countdown />}
       {game && shouldShowTarget && (
         <Target
           hitTarget={hitTarget}
@@ -103,8 +124,6 @@ export default function Grid({ game, setGame, setView }) {
         />
       )}
       {game && shouldShowPoints && <ShotPoints points={points} />}
-
-      <div className="counter">{counter} / 50</div>
     </div>
   );
 }

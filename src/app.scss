@@ -66,6 +66,22 @@ button {
   }
 }
 
+.game-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.countdown {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .target {
   display: block;
   width: 20px;
@@ -102,11 +118,7 @@ button {
   }
 }
 
-.counter {
-  position: absolute;
-  bottom: -30px;
-  right: 0;
-}
+
 
 .settings-field {
   display: flex;
