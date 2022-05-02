@@ -6,6 +6,7 @@ import Settings from "./Settings";
 export default function Content() {
   const [view, setView] = useState("pregame");
   const [game, setGame] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [shouldShowGrid, setShouldShowGrid] = useState(false);
   const [shouldShowCountdown, setShouldShowCountdown] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -27,7 +28,7 @@ export default function Content() {
   }
 
   return (
-    <div>
+    <div className="content">
       {view === "pregame" && (
         <>
           <Settings />
@@ -55,7 +56,9 @@ export default function Content() {
           <Grid
             game={game}
             setGame={setGame}
+            setGameOver={setGameOver}
             shouldShowGrid={shouldShowGrid}
+            setShouldShowGrid={setShouldShowGrid}
             shouldShowCountdown={shouldShowCountdown}
             setView={setView}
             counter={counter}
@@ -63,12 +66,21 @@ export default function Content() {
           />
         </>
       )}
-      {view === "postgame" && (
-        <>
-          <h3>game over</h3>
-          <p>Your score: {score.score}</p>
-          <button onClick={() => setView("pregame")}>Play again</button>
-        </>
+      {gameOver && (
+        <div className="end-game">
+          <div className="content">
+            <h2>Game over</h2>
+            <p>Your score: {score.score}</p>
+            <button
+              onClick={() => {
+                setView("pregame");
+                setGameOver(false);
+              }}
+            >
+              Play again
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

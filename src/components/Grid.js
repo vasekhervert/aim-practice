@@ -10,13 +10,14 @@ export default function Grid({
   setGame,
   setView,
   shouldShowGrid,
+  setShouldShowGrid,
   counter,
   setCounter,
   shouldShowCountdown,
+  setGameOver,
 }) {
   const [shouldShowTarget, setShouldShowTarget] = useState(false);
   const [shouldShowPoints, setShouldShowPoints] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
   const [top, setTop] = useState(300);
   const [left, setLeft] = useState(400);
   const [points, setPoints] = useState(null);
@@ -80,13 +81,11 @@ export default function Grid({
       setGame(false);
       setCounter(0);
       if (counter === 25) {
-        setGameOver(true);
+        setShouldShowGrid(false);
+        setTimeout(() => {
+          setGameOver(true);
+        }, 750);
       }
-    }
-    if (gameOver) {
-      setTimeout(() => {
-        setView("postgame");
-      }, 1500);
     }
     return () => {
       clearTimeout(show);

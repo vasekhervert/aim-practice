@@ -66,11 +66,32 @@ button {
   }
 }
 
+
+
+.content {
+  text-align: center;
+}
+
 .game-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  width: 800px;
+  margin: 12px auto;
+}
+
+.end-game {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom:0;
+  left: 0;
+  background-color: rgba(1,1,1,0.85);
+  display: flex;
+  justify-content: center;
+  .content {
+    margin-top: 6rem;
+  }
 }
 
 .countdown {
