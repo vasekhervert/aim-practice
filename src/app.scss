@@ -59,10 +59,29 @@ button {
   background-color: #111;
   position: relative;
   transition: box-shadow .5s, background-color .5s;
-  cursor: url("./assets/xhair/xhair-large-red.png") 18 18, auto; //small = 8 8, medium = 13 13, large = 18 18
   &.game {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);  
     background-color: black;
+  }
+  &.xhair {
+    &--large-green {
+      cursor: url("./assets/xhair/xhair-large-green.png") 18 18, auto;  //small = 8 8, medium = 13 13, large = 18 18
+    }
+    &--large-red {
+      cursor: url("./assets/xhair/xhair-large-red.png") 18 18, auto; 
+    }
+    &--medium-green {
+      cursor: url("./assets/xhair/xhair-medium-green.png") 13 13, auto;
+    }
+    &--medium-red {
+      cursor: url("./assets/xhair/xhair-medium-red.png") 13 13, auto;
+    }
+    &--small-green {
+      cursor: url("./assets/xhair/xhair-small-green.png") 8 8, auto;
+    }
+    &--small-red {
+      cursor: url("./assets/xhair/xhair-small-red.png") 8 8, auto;
+    }
   }
 }
 

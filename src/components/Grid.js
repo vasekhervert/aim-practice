@@ -29,6 +29,9 @@ export default function Grid({
   const randomTop = Math.floor(Math.random() * (topMax - topMin) + topMin);
   const randomLeft = Math.floor(Math.random() * (leftMax - leftMin) + leftMin);
 
+  const color = "green";
+  const size = "small";
+
   let show;
   let hide;
 
@@ -92,7 +95,10 @@ export default function Grid({
 
   return (
     <div
-      className={`grid-wrapper ${shouldShowGrid && "game"}`}
+      className={`grid-wrapper ${
+        shouldShowGrid && "game"
+      } xhair--${size}-${color}`}
+      style={{ cursor: 'url("' + size + "-" + color + '")' }}
       onClick={(e) => {
         if (game) {
           let rect = document
