@@ -24,7 +24,8 @@ export default function Target({ hitTarget, showShotPoints, top, left }) {
           score: prevState.score - rewards.targetMissed,
         }));
       } else {
-        const bonus = 2500 - settings.targetTime - diff;
+        const bonus = 2500 - settings.targetTime - diff; // try out
+
         setScore((prevState) => ({
           score: prevState.score + rewards.targetHit + bonus,
         }));
