@@ -8,7 +8,6 @@ import Countdown from "./Countdown";
 export default function Grid({
   game,
   setGame,
-  setView,
   shouldShowGrid,
   setShouldShowGrid,
   counter,
@@ -72,8 +71,6 @@ export default function Grid({
     });
   }
 
-  function startCoundDown() {}
-
   useEffect(() => {
     if (game && counter < 25) {
       startRound();
@@ -93,12 +90,6 @@ export default function Grid({
     };
   }, [counter, game]);
 
-  useEffect(() => {
-    if (shouldShowGrid) {
-      startCoundDown();
-    }
-  });
-
   return (
     <div
       className={`grid-wrapper ${shouldShowGrid && "game"}`}
@@ -109,7 +100,7 @@ export default function Grid({
             .getBoundingClientRect();
           let cordX = e.clientX - rect.left;
           let cordY = e.clientY - rect.top;
-          missTarget(cordX, cordY);
+          missTarget(cordX, cordY); // Grid is clicked = targets been missed
         }
       }}
     >

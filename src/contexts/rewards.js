@@ -3,8 +3,6 @@ import { useSettingsValue } from "./settings";
 
 export const RewardsContext = createContext();
 export const RewardsProvider = ({ children }) => {
-  const { settings } = useSettingsValue();
-
   const defaultReward = 300;
   const defaultMissedTarget = -300;
   const defaultMissedShot = -100;
