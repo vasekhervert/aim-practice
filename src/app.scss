@@ -130,6 +130,49 @@ button {
   }
 }
 
+.tooltip {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  margin-left: 8px;
+  cursor: pointer;
+  span {
+    background-color: #222;
+    color: white;
+    font-size: 9px;
+    line-height: 16px;
+    font-weight: 400;
+    display: block;
+    border-radius: 50%;
+    text-align: center;
+  }
+  .tooltip-content {
+    position: absolute;
+    display: none;
+    width: 190px;
+    height: auto;
+    font-size: 12px;
+    line-height: 1.2;
+    top: 50%;
+    transform: translatey(-50%);
+    font-weight: 400;
+    padding: 5px;
+    background-color: #222;
+    color: white;
+    border-radius: 4px;
+    &.is-open {
+      display: block;
+    }
+    &.left {
+      left: -210px;
+    }
+    &.right {
+      right: -210px;
+    }
+  }
+}
+
 @keyframes fade {
   0% {
     opacity: 1;

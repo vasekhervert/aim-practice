@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useSettingsValue, useRewardsValue } from "../contexts";
+import Tooltip from "./Tooltip";
+import Rewards from "./Rewards";
 
 export default function Settings() {
   const { settings, setSettings } = useSettingsValue();
@@ -24,7 +26,12 @@ export default function Settings() {
       <div className="settings">
         <h2>Settings: </h2>
         <div className="settings-field">
-          <div className="label">Delay</div>
+          <div className="label">
+            Target delay{" "}
+            <Tooltip label="?" id="delay">
+              Delay of showing the next target
+            </Tooltip>
+          </div>
           <div className="input">
             <button
               onClick={() =>
@@ -52,7 +59,12 @@ export default function Settings() {
           </div>
         </div>
         <div className="settings-field">
-          <div className="label">Target time</div>
+          <div className="label">
+            Target time{" "}
+            <Tooltip label="?" id="targetTime">
+              Length of target's visibility
+            </Tooltip>
+          </div>
           <div className="input">
             <button
               onClick={() =>
@@ -80,28 +92,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
-      <div>
-        <h2>Rewards:</h2>
-        <p>
-          Target hit:
-          <span className="green">
-            {rewards.targetHit} <span className="small"> pts</span>
-          </span>
-          <span className="small"> + Reaction time bonus</span>
-        </p>
-        <p>
-          Target miss:{" "}
-          <span className="red">
-            -{rewards.targetMissed} <span className="small"> pts</span>
-          </span>
-        </p>
-        <p>
-          Shot miss:{" "}
-          <span className="red">
-            -{rewards.shotMissed} <span className="small"> pts</span>
-          </span>
-        </p>
-      </div>
+      <Rewards rewards={rewards} />
     </>
   );
 }
