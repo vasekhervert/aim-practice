@@ -55,9 +55,24 @@ button {
   text-align: left;
 }
 
+.m-auto {
+  margin: auto;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.max-w-800 {
+  max-width: 800px;
+}
+
 .grid {
   display: grid;
-  max-width: 800px;
   margin: auto;
 }
 
@@ -65,8 +80,12 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-half {
+.gap-4 {
+  gap: 1rem;
+}
 
+.gap-8 {
+  gap: 2rem;
 }
 
 .grid-wrapper {
@@ -103,6 +122,14 @@ button {
   }
 }
 
+.xhair-box {
+  border: 1px solid white;
+  display: flex;
+  border-radius: 3px;
+  background-color: #444;
+  width: 40px;
+  height: 40px;
+}
 
 
 .content {
@@ -236,6 +263,30 @@ button {
   margin: 0 auto;
 }
 
+.radio {
+  text-align: left;
+  margin-bottom: 1rem;
+  button {
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 300;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0;
+    &:not(:last-child) {
+      border-right: none;
+    }
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+    &.active {
+      background-color: #444;
+    }
+  }
+}
+
 .settings-field {
   margin-bottom: 2rem;
   .label {
@@ -243,7 +294,6 @@ button {
    margin-bottom: .5rem;
   }
   .input {
-
     button {
       display: inline-block;
       background-color: #444;
