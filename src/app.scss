@@ -51,6 +51,24 @@ button {
   }
 }
 
+.text-left {
+  text-align: left;
+}
+
+.grid {
+  display: grid;
+  max-width: 800px;
+  margin: auto;
+}
+
+.grid-col-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-half {
+
+}
+
 .grid-wrapper {
   display: block;
   width: 800px;

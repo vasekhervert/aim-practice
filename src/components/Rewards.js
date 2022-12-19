@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Rewards({ rewards }) {
+export default function Rewards({ rewards, classes }) {
   return (
-    <div>
+    <div className={`${classes}`}>
       <h2>Rewards:</h2>
       <p>
         Target hit:

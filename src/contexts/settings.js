@@ -5,6 +5,8 @@ export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
     delay: 500,
     targetTime: 1000,
+    cursorColor: "green",
+    cursorSize: "small",
   });
 
   return (

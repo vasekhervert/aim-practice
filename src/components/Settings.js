@@ -22,8 +22,8 @@ export default function Settings() {
   }, [settings]);
 
   return (
-    <>
-      <div className="settings">
+    <div className="grid grid-col-2">
+      <div className="settings grid-half">
         <h2>Settings: </h2>
         <div className="settings-field">
           <div className="label">
@@ -92,7 +92,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
-      <Rewards rewards={rewards} />
-    </>
+      <Rewards rewards={rewards} classes="grid-half text-left" />
+    </div>
   );
 }
