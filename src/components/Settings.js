@@ -1,25 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSettingsValue, useRewardsValue } from "../contexts";
 import Tooltip from "./Tooltip";
 import Rewards from "./Rewards";
 
 export default function Settings() {
   const { settings, setSettings } = useSettingsValue();
-  const { defaultReward, rewards, setRewards } = useRewardsValue();
-
-  useEffect(() => {
-    const delayPenalty = settings.delay / 10; // def 50
-    const targetTimePenalty = settings.targetTime / 10; // def 100
-    const reward = defaultReward - delayPenalty - targetTimePenalty; // 300 - 50 - 100
-    const targetMiss = delayPenalty + targetTimePenalty; // 50 + 100
-    const shotMiss = targetMiss / 2; // 150 / 2
-    setRewards((prevState) => ({
-      ...prevState,
-      targetHit: reward,
-      targetMissed: targetMiss,
-      shotMissed: shotMiss,
-    }));
-  }, [settings]);
+  const { rewards } = useRewardsValue();
 
   return (
     <div className="grid grid-col-2">

@@ -3,7 +3,7 @@ import React from "react";
 export default function Rewards({ rewards, classes }) {
   return (
     <div className={`${classes}`}>
-      <h2>Rewards:</h2>
+      <h3>Rewards:</h3>
       <p>
         Target hit:
         <span className="green">
