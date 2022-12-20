@@ -26,11 +26,11 @@ export default function Settings() {
   };
 
   return (
-    <div className="grid grid-col-2 max-w-800">
+    <div className="grid grid-col-2 max-w-800 gap-8">
       <div className="settings grid-half">
-        <h2>Settings: </h2>
+        <h2 className="text-left">Settings: </h2>
         <div className="grid grid-col-2 gap-4">
-          <div className="grid-half">
+          <div className="grid-half text-left">
             <div className="settings-field">
               <div className="label">
                 Target delay{" "}
